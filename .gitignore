@@ -1,0 +1,30 @@
+# Data and Cache
+Dataset/
+data/
+*.zip
+*.tar.gz
+*.tar
+
+# Model Checkpoints
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# Python Environment & Bytecode
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDE / OS Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Experiment Logs and Generated Output caches
+.matplotlib/

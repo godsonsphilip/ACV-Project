@@ -1,0 +1,7 @@
+Target Framework: PyTorch 2.x with Torchvision
+Target Hardware: Google Colab Free Tier NVIDIA Tesla T4 GPU (16GB VRAM, CUDA 12.x)
+Local Python Environment: Python 3.10 / 3.11 / 3.12 compatible
+CUDA Requirement: CUDA 11.8+ or CUDA 12.x
+Mixed Precision: Supported (torch.cuda.amp.autocast, GradScaler)
+Host OS: Linux (Ubuntu 22.04 LTS on Colab) / Windows local workstation
+Seed: 42 (reproducible DataLoader, cuDNN deterministic=True, benchmark=False)
