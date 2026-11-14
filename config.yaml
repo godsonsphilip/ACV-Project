@@ -51,13 +51,13 @@ model:
 training:
   batch_size: 8
   num_workers: 2
-  epochs: 35
+  epochs: 10
   smoke_epochs: 1
   smoke_samples: 20
   lr: 0.001
   weight_decay: 0.0001
-  warmup_epochs: 3
-  early_stopping_patience: 10
+  warmup_epochs: 2
+  early_stopping_patience: 5
   use_amp: true
   loss_type: "unweighted"  # "unweighted" or "class_weighted"
 

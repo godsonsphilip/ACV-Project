@@ -470,7 +470,7 @@ def generate_robust_standalone_notebook():
                     "    ious = [tp[i] / denom[i] for i in range(12) if denom[i] > 0]\n",
                     "    return tot_loss / len(loader), (np.mean(ious) if ious else 0.0), (tp.sum() / cm.sum() if cm.sum() > 0 else 0.0)\n",
                     "\n",
-                    "def train_model(model, model_name, epochs=35, lr=1e-3, seed=42):\n",
+                    "def train_model(model, model_name, epochs=10, lr=1e-3, seed=42):\n",
                     "    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')\n",
                     "    model = model.to(device)\n",
                     "    opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)\n",
@@ -512,8 +512,8 @@ def generate_robust_standalone_notebook():
                     "                shutil.copy(f'checkpoints/{model_name}_best.pth', f'{DRIVE_CKPT_DIR}/{model_name}_best.pth')\n",
                     "        else:\n",
                     "            patience_count += 1\n",
-                    "            if patience_count >= 10:\n",
-                    "                print(f'Early stopping triggered after 10 epochs without improvement.')\n",
+                    "            if patience_count >= 5:\n",
+                    "                print(f'Early stopping triggered after 5 epochs without improvement.')\n",
                     "                break\n",
                     "    print(f'Finished {model_name} in {(time.time()-t_start)/60:.2f} min. Best Val mIoU: {best_val_miou:.4f}')\n",
                     "    return best_val_miou"
@@ -534,11 +534,11 @@ def generate_robust_standalone_notebook():
                 "source": [
                     "# 1. Train Model A (Baseline: No Skips)\n",
                     "model_a = Segmenter(use_skips=False)\n",
-                    "best_a = train_model(model_a, 'Model_A_Baseline_seed42', epochs=35)\n",
+                    "best_a = train_model(model_a, 'Model_A_Baseline_seed42', epochs=10)\n",
                     "\n",
                     "# 2. Train Model B (With Skip Connections)\n",
                     "model_b = Segmenter(use_skips=True)\n",
-                    "best_b = train_model(model_b, 'Model_B_Skips_seed42', epochs=35)"
+                    "best_b = train_model(model_b, 'Model_B_Skips_seed42', epochs=10)"
                 ]
             },
             {
